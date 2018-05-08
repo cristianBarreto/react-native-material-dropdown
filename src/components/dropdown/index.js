@@ -153,6 +153,8 @@ export default class Dropdown extends PureComponent {
     supportedOrientations: PropTypes.arrayOf(PropTypes.string),
 
     useNativeDriver: PropTypes.bool,
+    labelTextStyle: Text.propTypes.style,
+    textFieldStyle: Text.propTypes.style,
   };
 
   constructor(props) {
@@ -482,6 +484,8 @@ export default class Dropdown extends PureComponent {
       labelExtractor,
       dropdownOffset,
       renderAccessory = this.renderAccessory,
+      labelTextStyle,
+      textFieldStyle
     } = this.props;
 
     let index = this.selectedIndex();
@@ -507,7 +511,8 @@ export default class Dropdown extends PureComponent {
       <TextField
         label=''
         labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-
+        labelTextStyle={labelTextStyle}
+        style={textFieldStyle}
         {...props}
 
         value={title}
